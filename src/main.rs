@@ -2,7 +2,7 @@ use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
 fn main() {
-    let numer_to_guess = rand::thread_rng().gen_range(0..101);
+    let number_to_guess = rand::thread_rng().gen_range(0..101);
     let mut min: u32 = 1;
     let mut max: u32 = 100;
     let mut tries: u32 = 5;
@@ -18,7 +18,7 @@ fn main() {
             Ok(num) => num,
             Err(_) => continue,
         };
-        match guess.cmp(&numer_to_guess) {
+        match guess.cmp(&number_to_guess) {
             Ordering::Less => {
                 if guess > min {
                     min = guess;
@@ -37,7 +37,7 @@ fn main() {
         }
         tries -= 1;
         if tries == 0 {
-            println!("Defeat, the number was: {}.", numer_to_guess);
+            println!("Defeat, the number was: {}.", number_to_guess);
             println!("---------------------");
             break;
         }
